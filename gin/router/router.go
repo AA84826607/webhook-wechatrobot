@@ -7,11 +7,13 @@ import (
 
 type Router struct {
 	handler *handler.Handler
+	port string
 }
 
-func NewRouter(h *handler.Handler) (result Router) {
+func NewRouter(h *handler.Handler,port string) (result Router) {
 	return Router{
 		handler: h,
+		port: port,
 	}
 }
 func (r *Router) Router() {
@@ -22,5 +24,5 @@ func (r *Router) Router() {
 		// TODO create_order格式如左边
 		userGroup.POST("/prometheus_send", r.handler.PrometheusSend)
 	}
-	router.Run(":9090")
+	router.Run(":"+r.port)
 }
