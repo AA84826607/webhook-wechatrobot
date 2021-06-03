@@ -38,7 +38,7 @@ const Templ = `状态:<font color=\"comment\">{{.Status}}</font>
 {{ range $key, $value := .Labels }}
 	{{ $key }}:{{ $value }}
 {{end}}
->详情:[点击查看]( ... )`
+>详情:[点击查看]( http://8.129.31.137/alertmanager )`
 
 // one
 func RobotMsgModelOne(proSend template.Alert, addDes string) (string, error) {
