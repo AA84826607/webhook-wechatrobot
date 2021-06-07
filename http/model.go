@@ -34,11 +34,16 @@ type MsgContent struct {
 }
 
 // messsage models
-const Templ = `状态:<font color=\"comment\">{{.Status}}</font>
+//const Templ = `状态:<font color=\"comment\">{{.Status}}</font>
+//{{ range $key, $value := .Labels }}
+//	{{ $key }}:{{ $value }}
+//{{end}}
+//>详情:[点击查看]( http://8.129.31.137/alertmanager )`
+const Templ = `
 {{ range $key, $value := .Labels }}
-	{{ $key }}:{{ $value }}
-{{end}}
->详情:[点击查看]( http://8.129.31.137/alertmanager )`
+{{$key.instance}}:  扇区类型：{{$key.state}},数量：{{$key.value}}
+{{ end }}
+`
 
 // one
 func RobotMsgModelOne(proSend template.Alert, addDes string) (string, error) {
