@@ -13,7 +13,7 @@ func main() {
 	var port string
 	flag.StringVar(&key, "k", "", "Key for wechat work robot.")
 	flag.StringVar(&port, "p", "8989", "port")
-	flag.CommandLine.Usage = func() { fmt.Println("-u :the robot of the wechat API\n-p :expose the port") }
+	flag.CommandLine.Usage = func() { fmt.Println("-k :the robot of the wechat Key\n-p :expose the port") }
 	flag.Parse()
 	if key == "" {
 		panic("must add -u(the robot of the wechat API) and -p(port)")
